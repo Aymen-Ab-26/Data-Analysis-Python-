@@ -1,0 +1,11 @@
+Agency,Agency_Code,Department_Type
+San Francisco,SF-001,General
+San Francisco Police Department,SF-PD,Public Safety
+San Francisco Fire Department,SF-FD,Public Safety
+San Francisco Sheriff's Department,SF-SD,Public Safety
+San Francisco Public Works,SF-PW,Infrastructure
+San Francisco Municipal Transportation Agency,SF-MTA,Transportation
+San Francisco Recreation and Parks,SF-RP,Recreation
+San Francisco Public Health,SF-PH,Health
+San Francisco Public Utilities Commission,SF-PUC,Utilities
+San Francisco City Attorney,SF-CA,Legal
