@@ -16,15 +16,10 @@ def fill_table(df):
     win.tw.setRowCount(0)
     win.tw.setColumnCount(len(df.columns))
     win.tw.setHorizontalHeaderLabels(df.columns)
-
     for r in range(len(df)):
         win.tw.insertRow(r)
         for c in range(len(df.columns)):
-            win.tw.setItem(
-                r, c,
-                QTableWidgetItem(str(df.iat[r, c]))
-            )
-
+            win.tw.setItem(r, c,QTableWidgetItem(str(df.iat[r, c])))
     win.tw.resizeColumnsToContents()
 
 
@@ -39,17 +34,15 @@ def preview():
     try:
         n = int(win.le_lines.text())
         if n <= 0:
-            raise ValueError
-    except:
+            raise ValueError #ta3melek error bel3ani
+    except ValueError:
         QMessageBox.critical(win, "Error", "Enter a valid positive number")
         return
-
     df = pd.read_csv(FILENAME, low_memory=False, encoding="utf-8")
 
     if n > len(df):
         QMessageBox.critical(win, "Error", "Number exceeds dataset size")
         return
-
     fill_table(df.head(n))
 
 
