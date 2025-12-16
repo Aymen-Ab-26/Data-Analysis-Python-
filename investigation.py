@@ -45,7 +45,6 @@ def calculate_statistics(df_matches):
             stats["highest_total_pay"] = df_matches["TotalPay"].max()
     return stats
 
-
 def display_results(keyword, stats):
     print("\n" + "-" * 50)
     print(f"SEARCH RESULTS FOR: '{keyword}'")
@@ -59,7 +58,6 @@ def display_results(keyword, stats):
         print("No employees found matching your search.")
     print("-" * 50 + "\n")
 
-
 def save_results(df_matches, keyword):
     try:
         if len(df_matches) > 0:
@@ -70,13 +68,11 @@ def save_results(df_matches, keyword):
     except Exception as e:
         print(f"Error saving results: {e}")
 
-
 def main():
     try:
-        # Display banner
+        # ywari el banner
         display_banner()
-        
-        # Check if cleaned data exists
+        # Check existence of cleaned file
         if not os.path.exists(CLEANED_FILE):
             print(f"Error: '{CLEANED_FILE}' not found!")
             print("Please run the data cleaning process first.")

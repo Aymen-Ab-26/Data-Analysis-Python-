@@ -2,16 +2,14 @@ from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUi
 import pandas as pd
 import os
+import sys
 
 FILENAME = "data.csv"
 CLEANED_FILE = "cleaned_data.csv"
 AGENCY_FILE = "agency_codes.csv"
 MERGED_FILE = "merged_data.csv"
 
-
-# ==========================
-# fill QTableWidget
-# ==========================
+# fill QTableWidget helper function
 def fill_table(df):
     win.tw.setRowCount(0)
     win.tw.setColumnCount(len(df.columns))
@@ -23,9 +21,7 @@ def fill_table(df):
     win.tw.resizeColumnsToContents()
 
 
-# ==========================
 # TASK 1 – Preview Data
-# ==========================
 def preview():
     if not os.path.exists(FILENAME):
         QMessageBox.critical(win, "Error", "data.csv not found")
@@ -46,9 +42,7 @@ def preview():
     fill_table(df.head(n))
 
 
-# ==========================
 # TASK 2 – Search for Chief
-# ==========================
 def searchForChief():
     if not os.path.exists(FILENAME):
         QMessageBox.critical(win, "Error", "data.csv not found")
@@ -70,9 +64,7 @@ def searchForChief():
     fill_table(df_chief)
 
 
-# ==========================
 # TASK 3 – Two Columns
-# ==========================
 def getTwoColumns():
     if not os.path.exists(FILENAME):
         QMessageBox.critical(win, "Error", "data.csv not found")
@@ -88,9 +80,7 @@ def getTwoColumns():
     fill_table(df[list(required)])
 
 
-# ==========================
 # TASK 4 – Clean Data
-# ==========================
 def check_column(column):
     return column.str.contains("Not Provided", case=False, na=False)
 
@@ -122,9 +112,7 @@ def cleanData():
     fill_table(df)
 
 
-# ==========================
 # TASK 5a – High Earners
-# ==========================
 def highEarners():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -142,9 +130,7 @@ def highEarners():
     fill_table(df_high)
 
 
-# ==========================
 # TASK 5b – Employees from 2013
-# ==========================
 def employees2013():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -171,9 +157,7 @@ def employees2013():
     fill_table(df_2013)
 
 
-# ==========================
 # TASK 5c – Police Employees
-# ==========================
 def policeEmployees():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -200,9 +184,7 @@ def policeEmployees():
     fill_table(df_police)
 
 
-# ==========================
 # TASK 6 – Create Computed Columns (Is_Manager)
-# ==========================
 def addManagerColumn():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -235,9 +217,7 @@ def addManagerColumn():
     fill_table(df)
 
 
-# ==========================
 # TASK 7 – Summary Statistics
-# ==========================
 def showSummaryStats():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -286,9 +266,7 @@ def showSummaryStats():
     QMessageBox.information(win, "Success", "Summary statistics displayed in the list widget")
 
 
-# ==========================
 # TASK 8 – Group-based Aggregation (Average TotalPay per Year)
-# ==========================
 def groupByYear():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
@@ -306,34 +284,25 @@ def groupByYear():
     
     # Round to 2 decimal places
     grouped["Average_TotalPay"] = grouped["Average_TotalPay"].round(2)
-    
     # Sort by Year
     grouped = grouped.sort_values("Year")
-
     # Display in list widget
     win.lw.clear()
     win.lw.addItem("=== AVERAGE TOTAL PAY PER YEAR ===")
     win.lw.addItem("")
-    
     for _, row in grouped.iterrows():
         year = int(row["Year"])
         avg_pay = row["Average_TotalPay"]
         win.lw.addItem(f"Year {year}: ${avg_pay:,.2f}")
 
-    # Also display in table
-    fill_table(grouped)
-    
+    fill_table(grouped)    
     QMessageBox.information(win, "Success", "Group analysis completed")
 
-
-# ==========================
 # TASK 9 – Merge with Agency Codes
-# ==========================
 def mergeWithAgencyCodes():
     if not os.path.exists(CLEANED_FILE):
         QMessageBox.critical(win, "Error", "Run data cleaning first")
         return
-    
     if not os.path.exists(AGENCY_FILE):
         QMessageBox.critical(
             win, 
@@ -341,26 +310,20 @@ def mergeWithAgencyCodes():
             f"'{AGENCY_FILE}' not found!\n\nPlease create the agency mapping file first.\nYou can run 'create_agency_codes.py' to generate a sample file."
         )
         return
-
     try:
         # Load both files
         df_main = pd.read_csv(CLEANED_FILE, low_memory=False, encoding="utf-8")
         df_agency = pd.read_csv(AGENCY_FILE, encoding="utf-8")
-        
         if "Agency" not in df_main.columns:
             QMessageBox.critical(win, "Error", "Column 'Agency' not found in main dataset")
             return
-        
         if "Agency" not in df_agency.columns:
             QMessageBox.critical(win, "Error", "Column 'Agency' not found in agency_codes.csv")
             return
-        
         # Perform left merge (keep all records from main dataset)
         df_merged = pd.merge(df_main, df_agency, on="Agency", how="left")
-        
         # Save merged data
         df_merged.to_csv(MERGED_FILE, index=False)
-        
         # Count matched vs unmatched
         matched = df_merged[df_agency.columns[1]].notna().sum()  # Check if agency code exists
         total = len(df_merged)
@@ -370,7 +333,6 @@ def mergeWithAgencyCodes():
             "Success",
             f"Data merged successfully!\n\nTotal records: {total}\nMatched agencies: {matched}\nUnmatched: {total - matched}\n\nSaved to '{MERGED_FILE}'"
         )
-        
         # Display merged data
         fill_table(df_merged)
         
@@ -378,18 +340,15 @@ def mergeWithAgencyCodes():
         QMessageBox.critical(win, "Error", f"Merge failed: {str(e)}")
 
 
-# ==========================
 # Close App
-# ==========================
 def close_app():
     win.close()
 
 
-# ==========================
 # Main
-# ==========================
 app = QApplication([])
 win = loadUi("interface.ui")
+
 win.show()
 
 win.b_preview.clicked.connect(preview)
@@ -398,23 +357,11 @@ win.b_two.clicked.connect(getTwoColumns)
 win.b_clean.clicked.connect(cleanData)
 win.b_high.clicked.connect(highEarners)
 win.b_quit.clicked.connect(close_app)
-
-# Connect Task 5b button (pushButton_9)
 win.pushButton_9.clicked.connect(employees2013)
-
-# Connect Task 5c button (pushButton_7)
 win.pushButton_7.clicked.connect(policeEmployees)
-
-# Connect Task 6 button
 win.b_manager.clicked.connect(addManagerColumn)
-
-# Connect Task 7 button
 win.b_summary.clicked.connect(showSummaryStats)
-
-# Connect Task 8 button
 win.b_groupby.clicked.connect(groupByYear)
-
-# Connect Task 9 button
 win.b_merge.clicked.connect(mergeWithAgencyCodes)
 
 app.exec_()

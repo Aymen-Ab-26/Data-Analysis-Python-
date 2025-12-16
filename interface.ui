@@ -10,17 +10,36 @@
     <height>803</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(204, 204, 204);
+</string>
   </property>
   <widget class="QPushButton" name="b_quit">
    <property name="geometry">
     <rect>
-     <x>790</x>
-     <y>50</y>
+     <x>1020</x>
+     <y>40</y>
      <width>101</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255));</string>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -35,6 +54,15 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(125, 105, 124, 255), stop:1 rgba(232, 255, 231, 255));</string>
+   </property>
    <property name="text">
     <string>Preview Data</string>
    </property>
@@ -48,8 +76,17 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
+   </property>
    <property name="text">
-    <string>Search For "Chief"</string>
+    <string>Search For &quot;Chief&quot;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="b_clean">
@@ -60,6 +97,15 @@
      <width>151</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
    </property>
    <property name="text">
     <string>Clean Data</string>
@@ -74,6 +120,15 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
+   </property>
    <property name="text">
     <string>Get Two Columns</string>
    </property>
@@ -86,6 +141,15 @@
      <width>151</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
    </property>
    <property name="text">
     <string>Get High Earners</string>
@@ -100,6 +164,15 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
+   </property>
    <property name="text">
     <string>Police Employees</string>
    </property>
@@ -112,6 +185,19 @@
      <width>151</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255));
+font:10px;
+font-weight:bold;</string>
    </property>
    <property name="text">
     <string>Add Is_Manager Column</string>
@@ -126,6 +212,16 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255));
+font-weight:bold;</string>
+   </property>
    <property name="text">
     <string>Summary Statistics</string>
    </property>
@@ -138,6 +234,15 @@
      <width>151</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255));</string>
    </property>
    <property name="text">
     <string>Group By Year</string>
@@ -152,6 +257,15 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255));</string>
+   </property>
    <property name="text">
     <string>Merge Agency Codes</string>
    </property>
@@ -165,6 +279,15 @@
      <height>28</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:qlineargradient(spread:pad, x1:0, y1:0, x2:0.99, y2:0.375, stop:0 rgba(42, 98, 116, 255), stop:1 rgba(232, 255, 231, 255))</string>
+   </property>
    <property name="text">
     <string>Employees 2013</string>
    </property>
@@ -172,11 +295,20 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>480</x>
      <y>30</y>
-     <width>151</width>
+     <width>281</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:35px;
+background:transparent;</string>
    </property>
    <property name="text">
     <string>Data Analysis</string>
@@ -190,6 +322,9 @@
      <width>1031</width>
      <height>301</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
     <number>86</number>
@@ -258,11 +393,14 @@
   <widget class="QListWidget" name="lw">
    <property name="geometry">
     <rect>
-     <x>840</x>
+     <x>525</x>
      <y>461</y>
-     <width>256</width>
+     <width>651</width>
      <height>331</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="le_lines">
@@ -274,6 +412,9 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -283,6 +424,9 @@
      <width>151</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent;</string>
    </property>
    <property name="text">
     <string>Number of lines</string>
